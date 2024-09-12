@@ -31,7 +31,7 @@ spring:
       host: smtp.gmail.com
       port: 587
       username: toannguyen.hcmute@gmail.com
-      password: 'lenw viwd kpnm ckcv'  # Nh?p App Password vào ?ây
+      password: 'lenw viwd kpnm ckcv'  # Nh?p App Password vï¿½o ?ï¿½y
       properties:
         mail:
           smtp:
@@ -52,7 +52,7 @@ openapi:
     version: 1.0.0
 
 application:
-  title: Security
+  title: Y Viet - Clinic Service
   version: 1.0.0
 
 springdoc:
