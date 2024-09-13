@@ -3,14 +3,10 @@ package com.yviet.app.clinic.service.user;
 import com.yviet.app.clinic.config.security.UserInfoDetails;
 import com.yviet.app.clinic.config.security.jwt.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.yviet.app.clinic.config.security.jwt.JwtRequestFilter;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 
 @Service
@@ -28,7 +24,8 @@ public class UserServiceImpl implements UserService {
         // Converting UserEntity to UserDetails
 //        return userEntity.map(UserInfoDetails::new)
 //                .orElseThrow(() -> new UsernameNotFoundException("User not found "));
-        return new UserInfoDetails();
+        UserInfoDetails userInfoDetails = new UserInfoDetails();
+        return userInfoDetails;
     }
 
     @Override

@@ -35,28 +35,21 @@ public class SecurityConfig {
     @Lazy
     private JwtRequestFilter authFilter;
 
+    @Autowired
+    private UserDetailsService userDetailsService;
+
 
     // User Creation
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserService() {
-            @Override
-            public String authenticateUser(String email, String password) {
-                return "";
-            }
-
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return null;
-            }
-        };
+        return userDetailsService;
     }
 
     // Configuring HttpSecurity
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
-
+//                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/user/demo").hasAuthority("Admin"))
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/**").permitAll())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
